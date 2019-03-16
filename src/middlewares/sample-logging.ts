@@ -2,14 +2,14 @@
  * sample logging lambda middleware
  */
 
-import { IMiddyMiddlewareObject } from 'middy'
+import { MiddlewareObject } from 'middy'
 import log, { LogLevel } from "../utils/log";
 
 type SmapleLoggingMiddlewareConfig = {
   sampleRate: number
 };
 
-const getSampleLogginMiddleware = (config: SmapleLoggingMiddlewareConfig): IMiddyMiddlewareObject => {
+const getSampleLogginMiddleware = (config: SmapleLoggingMiddlewareConfig): MiddlewareObject<any, any> => {
   let oldLogLevel: keyof typeof LogLevel | undefined = undefined;
   return {
     before: (handler, next) => {

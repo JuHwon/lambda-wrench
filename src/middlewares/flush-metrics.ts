@@ -3,9 +3,9 @@
  */
 
 import cloudwatch from '../utils/cloudwatch'
-import { IMiddyMiddlewareObject } from 'middy';
+import { MiddlewareObject } from 'middy'
 
-const middleware: IMiddyMiddlewareObject = {
+const middleware: MiddlewareObject<any, any> = {
   after: (handler, next) => {
     cloudwatch.flush().then(() => next())
   },
