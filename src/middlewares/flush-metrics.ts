@@ -5,7 +5,7 @@
 import cloudwatch from '../utils/cloudwatch'
 import { MiddlewareObject } from 'middy'
 
-const middleware: MiddlewareObject<any, any> = {
+const flushMetricsMiddleware: MiddlewareObject<any, any> = {
   after: (handler, next) => {
     cloudwatch.flush().then(() => next())
   },
@@ -14,4 +14,4 @@ const middleware: MiddlewareObject<any, any> = {
   },
 }
 
-export default middleware
+export default flushMetricsMiddleware
